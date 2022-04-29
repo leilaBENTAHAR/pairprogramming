@@ -33,17 +33,21 @@
 ### Exemple des étapes pour tester une connexion avec Sequelize :
 
 1. Serveur
+
     - [x] On crée une route, une vue, un controller et un model qui vont travailler ensemble.
     - Le dossier `app` contiendra notre architecture MVC
+
         - ```javascript
             |-- app
                   |-- controllers
                   |-- models
                   |-- views
           ```
+
         ```
 
         ```
+
     - [x] Dans un controller, faites une requete sequelize et afficher les résultats sur la page créée pour ce test.
     - [x] Se resservir des fichiers de test pour un vrai truc
     -
@@ -52,3 +56,5 @@
 
 25. `npm i bcryptjs`
 26. Gérer les mots de passe avec les méthodes **salt, hash et compare**
+
+### Faire la liste des requêtes a maitriser avec des exemples
