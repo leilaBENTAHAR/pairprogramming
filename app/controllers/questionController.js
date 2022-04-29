@@ -1,4 +1,5 @@
-const Question = require('../models/sequelize-models/question');
+const { Question, Level } = require('../models/sequelize-models');
+
 const questionController = {
     async index(req, res) {
         //
@@ -26,6 +27,21 @@ const questionController = {
         } catch (error) {
             console.error(error);
         }
+    },
+
+    async questionWitLevel(req, res) {
+        //Récupérer une Question avec son Level associé :
+        // https://sequelize.org/docs/v6/core-concepts/assocs/
+        // eager loading
+
+        const question = await Question.findOne({
+            where: { id: 3 },
+            include: Level,
+        });
+
+        console.log(question);
+
+        res.end();
     },
 };
 

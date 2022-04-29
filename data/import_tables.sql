@@ -5,8 +5,8 @@
 -- Chaque table contiendra un champs created_at contenant la date de création d'un enregistrement
 -- Et un champ updated_at contenant la date de mise à jour de cet enregistrement
 -- Création d'une transaction, c'est un groupe d' instruction SQL
--- qui rends celles-ci dépéndantes les unes des autres. 
--- Si au moins une des instructions génère une erreur, 
+-- qui rends celles-ci dépéndantes les unes des autres.
+-- Si au moins une des instructions génère une erreur,
 -- alors toutes les commandes sont invalidés
 BEGIN;
 
@@ -26,7 +26,7 @@ DROP TABLE IF EXISTS "level",
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS "level" (
   -- une clé primaire est automatiquement NOT NULL. Pas besoin de le préciser.
-  -- 
+  --
   -- On spécifie que la colonne sera généré automatiquement par la BDD en suivant une séquence numérique prédéfinie de 1 en 1
   -- On peut définir BY DEFAULT (surcharge de la valeur possible) ou ALWAYS (surcharge de la valeur impossible)
   -- Ici on utilise BY DEFAULT car on défini nous même les valeurs des clé primaires dans les insertions du fichier import_data.sql
@@ -120,3 +120,23 @@ ALTER TABLE "answer"
 
 -- Pour mettre fin à au bloc de transaction et l'exécuter
 COMMIT;
+
+
+SELECT
+"Question"."id",
+"Question"."question",
+"Question"."anecdote",
+"Question"."wiki",
+"Question"."level_id",
+"Question"."answer_id",
+"Question"."quiz_id",
+"Question"."created_at",
+"Question"."updated_at",
+"Level"."id" AS "Level.id",
+"Level"."name" AS "Level.name",
+"Level"."created_at" AS "Level.created_at",
+"Level"."updated_at" AS "Level.updated_at"
+FROM "question" AS "Question"
+LEFT OUTER JOIN "level" AS "Level"
+ON "Question"."level_id" = "Level"."id"
+WHERE "Question"."id" = 3;

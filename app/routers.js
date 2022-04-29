@@ -7,14 +7,15 @@ const levelController = require('./controllers/levelController');
 const router = express.Router();
 
 router.get('/', mainController.homePage);
-// Route paramétrée
-router.get('/profile/:id', userController.profile);
-
-/// Créer un level
+// Gardez ce fichier organisé permet de mieux s'y retrouver
+// Créer un level
 router.post('/create/level', levelController.store);
 
 router.get('/questions', questionController.index);
+router.get('/question/with/level', questionController.questionWitLevel);
 
+// Route paramétrée
+router.get('/profile/:id', userController.profile);
 router.get('/register', userController.index);
 router.post('/register', userController.register);
 

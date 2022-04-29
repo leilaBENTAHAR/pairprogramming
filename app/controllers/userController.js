@@ -1,5 +1,5 @@
-const User = require('../models/sequelize-models/user');
 const bcrypt = require('bcrypt');
+const { User } = require('../models/sequelize-models');
 
 const userController = {
     index(req, res) {

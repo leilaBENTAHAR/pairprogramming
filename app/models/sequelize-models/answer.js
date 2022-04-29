@@ -1,9 +1,9 @@
-const { Sequelize, Model, DataTypes, literal } = require('sequelize');
+const { Model, Sequelize, literal } = require('sequelize');
 const sequelize = require('./getConnexion')();
 
-class Question extends Model {}
+class Answer extends Model {}
 
-Question.init(
+Answer.init(
     {
         id: {
             type: Sequelize.INTEGER,
@@ -11,25 +11,11 @@ Question.init(
             autoIncrement: true,
             primaryKey: true,
         },
-        question: {
+        description: {
             type: Sequelize.TEXT,
             allowNull: false,
         },
-        anecdote: {
-            type: Sequelize.TEXT,
-            allowNull: true,
-        },
-        wiki: {
-            type: Sequelize.TEXT,
-            allowNull: true,
-        },
-        level_id: {
-            type: Sequelize.INTEGER,
-        },
-        answer_id: {
-            type: Sequelize.INTEGER,
-        },
-        quiz_id: {
+        question_id: {
             type: Sequelize.INTEGER,
         },
         created_at: {
@@ -42,12 +28,11 @@ Question.init(
             allowNull: true,
         },
     },
-    // On dit au model comment se connecter a la BDD
     {
         sequelize: sequelize,
-        tableName: 'question',
-        modelName: 'Question',
+        modelName: 'Answer',
+        tableName: 'answer',
     }
 );
 
-module.exports = Question;
+module.exports = Answer;

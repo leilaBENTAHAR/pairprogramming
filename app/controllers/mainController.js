@@ -1,4 +1,4 @@
-const Level = require('../models/sequelize-models/level');
+const { Level } = require('../models/sequelize-models');
 
 const mainController = {
     //

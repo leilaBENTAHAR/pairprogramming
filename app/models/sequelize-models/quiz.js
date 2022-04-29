@@ -1,36 +1,31 @@
-const { Sequelize, Model, DataTypes, literal } = require('sequelize');
+const { Model, Sequelize, literal } = require('sequelize');
 const sequelize = require('./getConnexion')();
 
-class Question extends Model {}
+class Quiz extends Model {}
 
-Question.init(
+Quiz.init(
     {
+        //
         id: {
             type: Sequelize.INTEGER,
             unique: true,
             autoIncrement: true,
             primaryKey: true,
         },
-        question: {
+        title: {
+            type: Sequelize.STRING,
+            allowNull: false,
+        },
+        description: {
             type: Sequelize.TEXT,
             allowNull: false,
         },
-        anecdote: {
-            type: Sequelize.TEXT,
-            allowNull: true,
-        },
-        wiki: {
-            type: Sequelize.TEXT,
-            allowNull: true,
-        },
-        level_id: {
+        user_id: {
             type: Sequelize.INTEGER,
-        },
-        answer_id: {
-            type: Sequelize.INTEGER,
-        },
-        quiz_id: {
-            type: Sequelize.INTEGER,
+            // Possibilité  de faire une assoc ici
+            // references: {
+            //     model: User,
+            // },
         },
         created_at: {
             type: Sequelize.DATE,
@@ -42,12 +37,11 @@ Question.init(
             allowNull: true,
         },
     },
-    // On dit au model comment se connecter a la BDD
     {
         sequelize: sequelize,
-        tableName: 'question',
-        modelName: 'Question',
+        modelName: 'Quiz',
+        tableName: 'quiz',
     }
 );
 
-module.exports = Question;
+module.exports = Quiz;

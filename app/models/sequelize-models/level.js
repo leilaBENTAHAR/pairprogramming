@@ -1,4 +1,4 @@
-const { Sequelize, Model, DataTypes } = require('sequelize');
+const { Sequelize, Model, DataTypes, literal } = require('sequelize');
 // La fonction qu'on importe est exéctue en même temps gràce aux parenthèses
 const sequelize = require('./getConnexion')();
 
