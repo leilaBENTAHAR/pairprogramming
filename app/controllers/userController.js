@@ -37,13 +37,12 @@ const userController = {
 
             // Chiffre le mot de passe
             const salt = await bcrypt.genSalt(10);
-            console.log(salt);
             const hash = await bcrypt.hash(password, salt);
-            console.log(hash);
 
             user.password = hash;
             // diverses chose
 
+            // .save() retourne qqchose que vous devrez console.log juste pour vérifier
             // Quand j'ai fini :
             await user.save();
 
@@ -55,7 +54,7 @@ const userController = {
             // });
         } catch (error) {
             // récupérer les erreurs de validation et renvoyez
-            // ces erreur comme infomartion à l'utilisateur
+            // ces erreur comme infomation à l'utilisateur
             // sur la page register
             console.error(error);
         }

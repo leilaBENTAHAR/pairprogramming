@@ -1,0 +1,25 @@
+<%- include('partials/header') %> <% if (locals.message) { %>
+<p><%= message %></p>
+<% } %>
+
+<h1>Les questions</h1>
+
+<form action="/create/level" method="POST">
+    <!-- Merci Renaud -->
+    <input type="text" placeholder="name" name="name" />
+    <!--  -->
+    <button type="submit">Create Level</button>
+</form>
+
+<% for( let question of questions ) { %>
+<p><%= question.question %></p>
+<% } %>
+
+<h2>Version Renaud</h2>
+<% questions.forEach(question => { %>
+<h2>Question <%= question.id %></h2>
+<ul>
+    <li><%= question.question %></li>
+    <li>Le saviez-vous ? <%= question.anecdote %></li>
+</ul>
+<% }) %> <%- include('partials/footer') %>

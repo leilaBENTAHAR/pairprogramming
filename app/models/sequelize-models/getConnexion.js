@@ -13,7 +13,7 @@ function getConnexion() {
             host: process.env.HOST,
             dialect: process.env.DB_ENV,
             // options qui désactive le log des requêtes dans le terminal
-            logging: false,
+            // logging: false,
         }
     );
 
