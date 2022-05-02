@@ -27,7 +27,7 @@ Quiz.hasMany(Question, {
 
 Question.belongsTo(Quiz, {
     foreignKey: 'quiz_id',
-    as: 'questions',
+    as: 'quiz',
 });
 
 // Question et Answer
