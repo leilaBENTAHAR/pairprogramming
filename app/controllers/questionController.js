@@ -1,4 +1,4 @@
-const { Question, Level } = require('../models/sequelize-models');
+const { Question, Level } = require('../models/index');
 
 const questionController = {
     async index(req, res) {

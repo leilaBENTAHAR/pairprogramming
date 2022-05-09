@@ -1,7 +1,4 @@
-//  déclarer une propriété pour chaque champ de la table correspondante.
-//  coder un `constructor` qui prend en paramètre un objet.
-// Cet objet contient toutes les valeurs à recopier dans l'instance.
-//  ne pas oublier d'exporter la classe !
+
 const client = require('../database');
 const emailValidator = require('email-validator');
 const CoreModel = require('./coremodel');
@@ -13,10 +10,10 @@ class User extends CoreModel {
     firstname;
     lastname;
 
-    /**
-     *
-     * @param {obj} obj obj  // est un objet
-     */
+    
+     
+      @param {obj} obj   //
+     
     constructor(obj) {
         super(obj.id);
         if (typeof obj.email !== 'string') {
@@ -27,8 +24,7 @@ class User extends CoreModel {
         }
         this.email = obj.email;
 
-        // A vous de définir ce que vous imposez comme format
-        //  de mot de passe a l'utilisateur
+       
         if (typeof obj.password !== 'string') {
             throw new Error('User password must be a string');
         }
@@ -73,7 +69,7 @@ class User extends CoreModel {
         });
     }
 
-    // kudos Océane ! :)
+    
     update() {
         const query = {
             text: `UPDATE "user" SET
@@ -99,7 +95,7 @@ class User extends CoreModel {
                 return console.log('Update did not target any rows', this);
             }
 
-            // au moins une ligne a été modifié => tout va bien !
+            
             return console.log(this);
         });
     }

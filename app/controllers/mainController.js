@@ -1,20 +1,21 @@
-const { Level, Tag, Quiz } = require('../models/sequelize-models');
+const { Level, Tag, Quiz } = require('../models/index');
 
 const mainController = {
     //
-    // homePage(req, res) {
-    //     // select * from nomDuModel
-    //     Level.findAll()
-    //         .then((data) => {
-    //             res.render('home', { levels: data });
-    //         })
-    //         .catch((err) => {
-    //             console.error(err);
-    //         })
-    //         .finally(() => {
-    //             console.log('requête terminée');
-    //         });
-    // },
+    async homePage(req, res) {
+        try {
+
+            const quizzes = await Quiz.findAll({
+                include : { association: 'author'},
+            });
+    
+   
+             
+}    catch (err) => {
+
+                 console.error(err);
+  }
+    
     async homePage(req, res) {
         try {
             const data = await Level.findAll();
@@ -30,20 +31,20 @@ const mainController = {
             // Récupérer les quiz avec leurs auteurs respectifs
             // il faut utiliser include
             // il faut exclure la champs date et id
-            // const quiz = await Quiz.findAll({
-            //     include: [{ association: 'author' }],
-            //     order: ['id'],
-            //     attributes: {
-            //         exclude: ['created_at', 'updated_at'],
-            //     },
-            // });
+             const quiz = await Quiz.findAll({
+                 include: [{ association: 'author' }],
+                 order: ['id'],
+                 attributes: {
+                    exclude: ['created_at', 'updated_at'],
+                 },
+             });
 
-            // const quizzes = await Quiz.findAll({
-            //     include: [{ association: 'author' }],
-            //     attributes: {
-            //         exclude: ['created_at', 'updated_at', 'user_id'],
-            //     },
-            // });
+            const quizzes = await Quiz.findAll({
+                include: [{ association: 'author' }],
+                 attributes: {
+                    exclude: ['created_at', 'updated_at', 'user_id'],
+             },
+         });
 
             const quizzes = await Quiz.findAll({
                 include: [
